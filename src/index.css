@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(1200px 800px at 50% 30%, rgba(236, 72, 153, 0.10), transparent 60%),
+    radial-gradient(900px 700px at 20% 80%, rgba(150, 80, 160, 0.12), transparent 60%),
+    linear-gradient(180deg, #241226 0%, #1a0f1e 60%, #120a15 100%);
+  color: #fff5fa;
+  font-family: 'Poppins', system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: rgba(236, 72, 153, 0.4);
+}
+
+/* ---------- caret blink ---------- */
+.tw-caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -0.1em;
+  background: #f9a8d4;
+  animation: caret-blink 0.9s steps(1) infinite;
+}
+@keyframes caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+/* ---------- ending glitch (RGB slice) ---------- */
+.glitch {
+  position: relative;
+  display: inline-block;
+}
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.glitch::before {
+  color: #f472b6;
+  animation: glitch-a 0.45s steps(2) both;
+}
+.glitch::after {
+  color: #7dd3fc;
+  animation: glitch-b 0.45s steps(2) both;
+}
+@keyframes glitch-a {
+  0%   { clip-path: inset(15% 0 55% 0); transform: translate(-6px, 2px); opacity: 0.9; }
+  30%  { clip-path: inset(60% 0 10% 0); transform: translate(5px, -2px); }
+  60%  { clip-path: inset(30% 0 40% 0); transform: translate(-3px, 1px); }
+  100% { clip-path: inset(0 0 100% 0);  transform: translate(0, 0); opacity: 0; }
+}
+@keyframes glitch-b {
+  0%   { clip-path: inset(55% 0 15% 0); transform: translate(6px, -2px); opacity: 0.9; }
+  30%  { clip-path: inset(10% 0 60% 0); transform: translate(-5px, 2px); }
+  60%  { clip-path: inset(40% 0 30% 0); transform: translate(3px, -1px); }
+  100% { clip-path: inset(100% 0 0 0);  transform: translate(0, 0); opacity: 0; }
+}
+
+/* ---------- subtle twinkle for stars drawn via CSS (fallback) ---------- */
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.9; }
+}
+
+/* thin elegant scrollbar inside letter card */
+.letter-scroll::-webkit-scrollbar { width: 5px; }
+.letter-scroll::-webkit-scrollbar-track { background: transparent; }
+.letter-scroll::-webkit-scrollbar-thumb {
+  background: rgba(236, 72, 153, 0.35);
+  border-radius: 999px;
+}
+
+button:focus-visible {
+  outline: 2px solid rgba(236, 72, 153, 0.85);
+  outline-offset: 3px;
+}
